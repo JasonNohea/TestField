@@ -9,8 +9,8 @@ const getData = async () => {
   //   if (!response.ok) {
   //     throw new Error(`HTTP error! status: ${response.status}`);
   //   }
+  console.log(data);
   return data;
-  //   console.log(data);
 };
 
 // getData();
@@ -26,7 +26,10 @@ const displayUser = async () => {
     .filter((eventData) => {
       if (query === "") {
         return eventData;
-      } else if (eventData.name.toLowerCase().includes(query.toLowerCase())) {
+      } else if (
+        eventData.name.toLowerCase().includes(query.toLowerCase()) ||
+        eventData.username.toLowerCase().includes(query.toLowerCase())
+      ) {
         return eventData;
       }
     })
