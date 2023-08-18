@@ -1,0 +1,47 @@
+h1 {
+  font-size: 3em;
+}
+
+h1 > span {
+  position: relative;
+  display: inline-block;
+  color: #ff3c31;
+  height: 1.25em;
+  vertical-align: bottom;
+  overflow: hidden;
+}
+
+h1 > span > span {
+  display: block;
+  animation: animateWord 5s infinite ease;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: #1e1c27;
+  color: #fff;
+  font-family: "Geologica", sans-serif;
+}
+
+@keyframes animateWord {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(-200%);
+  }
+  75% {
+    transform: translateY(-300%);
+  }
+  100% {
+    transform: translateY(-400%);
+  }
+}
