@@ -1,5 +1,5 @@
 <?php
-$database = file_get_contents("http://localhost/KIREI/Kirei/alternative/json.json");
+$database = file_get_contents("http://localhost/testfield/json%20using%20php/json.json");
 $database = json_decode($database, TRUE);
 if (isset($_POST['username']) && isset($_POST['password'])) {
     for ($i = 0; $i < count($database); $i++) {
