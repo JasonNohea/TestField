@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "cb-font-1";
+  src: url("./fonts/a-mun-celestial.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "cb-font-2";
+  src: url("./fonts/Celestial-Being-Font-Patch.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-cb {
+  font-family: "cb-font-2", sans-serif;
+}
+
+.font-a-mun {
+  font-family: "cb-font-1", sans-serif;
+}
+
+.box-shadow {
+  box-shadow: -5px 3px rgba(0, 0, 0, 0.5);
+}
+
+.fat-top-left {
+  border-top-width: medium;
+  border-left-width: medium;
+}
+
+.white-top {
+  border-top-width: medium;
+  border-left: medium;
+  border: white;
+}

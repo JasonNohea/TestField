@@ -6,6 +6,12 @@ body {
   padding: 0px;
   margin: 0px;
   overflow: hidden;
+  /* background: linear-gradient(
+    to bottom,
+    #62af3e 5vw,
+    #4b858f 30vw,
+    #a6e9cd 50vw
+  ); */
 }
 
 .content {
@@ -165,7 +171,7 @@ body {
   display: block;
   position: absolute;
   color: white;
-  top: 0%;
+  top: -8%;
   left: 0%;
   width: 100vw;
   height: 100vh;
@@ -182,7 +188,7 @@ body {
 }
 
 .opacity {
-  opacity: 0;
+  display: none;
 }
 
 .container {
@@ -194,17 +200,18 @@ body {
   /* width: fit-content; */
   overflow: hidden;
   margin: 5vw auto;
-  width: 90%;
-  height: 80%;
-  background-color: rgb(128, 127, 126, 0.4);
+  width: 80%;
+  height: 70%;
+  background-color: rgba(224, 214, 203, 0.75);
   border-radius: 10px;
+  display: none;
 }
 
 .text {
   opacity: 0;
   animation: fadeIn 1s linear forwards;
   margin-bottom: 10px;
-  color: white;
+  color: rgb(85, 85, 85);
   text-align: center;
   margin-top: 2vw;
   text-wrap: balance;
