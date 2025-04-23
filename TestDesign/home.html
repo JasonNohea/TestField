@@ -5,9 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
+    <script src="jscript.js"></script>
     <title>Document</title>
   </head>
-  <body class="relative min-h-screen bg-white">
+  <body class="relative min-h-screen bg-gray-200">
+    <!-- standby -->
+    <div
+      onclick="fadeSplash(); shrunk(); "
+      id="splash"
+      class="fixed inset-0 flex items-center justify-center bg-black opacity-100 z-50 transition-opacity duration-1000"
+    >
+      <div class="standby flex min-h-screen items-center justify-center">
+        <table class="table-auto border border-white text-white">
+          <tr
+            id="vertical"
+            class="h-[260px] transition-all duration-500 delay-500"
+          >
+            <td
+              class="border w-[56px] border-white border-opacity-20 [border-top-width:2px] [border-bottom-width:2px] [border-bottom-color:#ffffff] [border-top-color:#ffffff]"
+            ></td>
+            <td class="border w-[260px] border-white border-opacity-20"></td>
+            <td
+              class="border w-[56px] border-white border-opacity-20 [border-top-width:2px] [border-bottom-width:2px] [border-bottom-color:#ffffff] [border-top-color:#ffffff]"
+            ></td>
+          </tr>
+        </table>
+      </div>
+      <div
+        id="horizontal"
+        class="absolute font-cb text-2xl text-white border border-white border-opacity-20 w-[550px] h-[90px] [border-left-width:2px] [border-right-width:2px] [border-left-color:#ffffff] [border-right-color:#ffffff] transition-all duration-500"
+      >
+        <p
+          id="standby-text"
+          class="absolute left-[195px] top-[18px] blink-text transition-all duration-500"
+        >
+          STANDBY MODE
+        </p>
+      </div>
+    </div>
     <!-- Grid overlay -->
     <div
       class="absolute inset-0 bg-[linear-gradient(to_right,_#434343_0.1px,_transparent_1px),_linear-gradient(to_bottom,_#434343_0.1px,_transparent_1px)] [background-size:30px_30px] opacity-30 pointer-events-none"
@@ -15,37 +50,43 @@
 
     <!-- Content goes here -->
     <div class="relative z-10 flex items-center justify-center min-h-screen">
-      <!-- border side -->
+      <!-- component -->
       <div
-        class="relative w-80 bg-opacity-20 border border-gray-300 border-opacity-30 bg-white shadow-md rounded-sm"
+        class="relative bg-gray-400 bg-opacity-30 pb-2 pt-1 pr-1 font-cb text-[135px] text-white w-[500px] h-[500px]"
       >
-        <!-- Top line -->
+        <p class="absolute left-[-10px] top-[-20px] z-[1]">&#9700;</p>
         <div
-          class="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-px bg-gray-700"
-        ></div>
-        <!-- Bottom line -->
-        <div
-          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-px bg-gray-700"
-        ></div>
-        <!-- Left line -->
-        <div
-          class="absolute left-0 top-1/2 -translate-y-1/2 h-3 w-px bg-gray-700"
-        ></div>
-        <!-- Right line -->
-        <div
-          class="absolute right-0 top-1/2 -translate-y-1/2 h-3 w-px bg-gray-700"
-        ></div>
-
-        <!-- Actual content -->
-        <div class="bg-gray-400 bg-opacity-20 pb-2 pl-2 pt-1 pr-1">
+          class="relative w-80 bg-gray-400 bg-opacity-40 border border-gray-400 border-opacity-30 shadow-md rounded-sm m-2 w-[480px] h-[480px]"
+        >
+          <!-- Top line -->
           <div
-            class="relative bg-white border border-gray-400 box-shadow rounded-sm"
-          >
-            <div class="border-gray-800 h-5 w-5 fat-top-left"></div>
-            <p class="text-3xl font-cb text-gray-800 mt-1 m-4">TEST ONLY</p>
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
+          ></div>
+          <!-- Bottom line -->
+          <div
+            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
+          ></div>
+          <!-- Left line -->
+          <div
+            class="absolute left-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
+          ></div>
+          <!-- Right line -->
+          <div
+            class="absolute right-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
+          ></div>
+
+          <!-- Actual content -->
+          <div class="bg-gray-400 bg-opacity-20 pb-2 pl-2 pt-1 pr-1">
+            <div
+              class="relative bg-white m-2 border border-gray-400 box-shadow rounded-sm z-[2] w-[450px] h-[455px]"
+            >
+              <div class="border-gray-800 h-5 w-5 fat-top-left"></div>
+              <p class="text-3xl font-cb text-gray-800 mt-1 m-4">TEST ONLY</p>
+            </div>
           </div>
         </div>
       </div>
+      <!-- component -->
     </div>
   </body>
 </html>

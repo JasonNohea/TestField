@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .flex {
+        display: flex;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <body
+      class="bg-black min-h-screen flex items-center justify-center relative text-white"
+    >
+      <!-- Overlay boxes -->
+      <div
+        class="absolute w-[300px] h-[200px] border-white border-opacity-20 border"
+      >
+        <!-- Top left and bottom right corners -->
+        <div class="absolute top-0 left-0 w-6 h-0.5 bg-white"></div>
+        <div class="absolute bottom-0 right-0 w-6 h-0.5 bg-white"></div>
+        <div class="absolute top-0 left-0 h-6 w-0.5 bg-white"></div>
+        <div class="absolute bottom-0 right-0 h-6 w-0.5 bg-white"></div>
+      </div>
+
+      <!-- Horizontal box -->
+      <div
+        class="absolute w-[500px] h-[100px] border-white border-opacity-20 border"
+      >
+        <div class="absolute left-0 top-0 h-0.5 w-6 bg-white"></div>
+        <div class="absolute right-0 bottom-0 h-0.5 w-6 bg-white"></div>
+        <div class="absolute left-0 top-0 w-0.5 h-6 bg-white"></div>
+        <div class="absolute right-0 bottom-0 w-0.5 h-6 bg-white"></div>
+      </div>
+
+      <!-- Center text -->
+      <div class="relative z-10 text-gray-600 tracking-widest text-sm">
+        STANDBY MODE
+      </div>
+    </body>
+  </body>
+</html>
