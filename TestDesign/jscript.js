@@ -1,4 +1,16 @@
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.mode-button');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            buttons.forEach(btn => btn.classList.remove('pressed'));
+            button.classList.add('pressed');
+        });
+    });
+});
+
 function fadeSplash() {
     const splash = document.getElementById("splash");
 

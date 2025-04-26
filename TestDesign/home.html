@@ -8,7 +8,7 @@
     <script src="jscript.js"></script>
     <title>Document</title>
   </head>
-  <body class="relative min-h-screen bg-gray-200">
+  <body class="relative min-h-screen bg-gray-200 overflow-hidden">
     <!-- standby -->
     <div
       onclick="fadeSplash(); shrunk(); "
@@ -37,7 +37,7 @@
       >
         <p
           id="standby-text"
-          class="absolute left-[195px] top-[18px] blink-text transition-all duration-500"
+          class="absolute left-[195px] top-[18px] blink-text transition-all duration-500 unselectable"
         >
           STANDBY MODE
         </p>
@@ -49,44 +49,93 @@
     ></div>
 
     <!-- Content goes here -->
-    <div class="relative z-10 flex items-center justify-center min-h-screen">
-      <!-- component -->
-      <div
-        class="relative bg-gray-400 bg-opacity-30 pb-2 pt-1 pr-1 font-cb text-[135px] text-white w-[500px] h-[500px]"
-      >
-        <p class="absolute left-[-10px] top-[-20px] z-[1]">&#9700;</p>
+    <div class="relative z-10 min-h-screen">
+      <div class="w-[100%] flex justify-between relative top-[-25px]">
+        <div class="flex">
+          <button
+            class="pressed h-[20px] mode-button p-4 ml-8 m-2 border-4 border-black rounded-xl font-cb text-xl unselectable hover:bg-gray-300 active:scale-95 transition"
+          >
+            MODE 1
+          </button>
+          <button
+            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl unselectable hover:bg-gray-300 active:scale-95 transition"
+          >
+            MODE 2
+          </button>
+          <button
+            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl unselectable hover:bg-gray-300 active:scale-95 transition"
+          >
+            MODE 3
+          </button>
+          <button
+            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl unselectable hover:bg-gray-300 active:scale-95 transition"
+          >
+            MODE 4
+          </button>
+        </div>
         <div
-          class="relative w-80 bg-gray-400 bg-opacity-40 border border-gray-400 border-opacity-30 shadow-md rounded-sm m-2 w-[480px] h-[480px]"
+          class="p-4 h-[20px] m-2 mr-7 border-4 border-black rounded-xl font-cb text-xl w-[230px]"
         >
-          <!-- Top line -->
-          <div
-            class="absolute top-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
-          ></div>
-          <!-- Bottom line -->
-          <div
-            class="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
-          ></div>
-          <!-- Left line -->
-          <div
-            class="absolute left-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
-          ></div>
-          <!-- Right line -->
-          <div
-            class="absolute right-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
-          ></div>
-
-          <!-- Actual content -->
-          <div class="bg-gray-400 bg-opacity-20 pb-2 pl-2 pt-1 pr-1">
-            <div
-              class="relative bg-white m-2 border border-gray-400 box-shadow rounded-sm z-[2] w-[450px] h-[455px]"
-            >
-              <div class="border-gray-800 h-5 w-5 fat-top-left"></div>
-              <p class="text-3xl font-cb text-gray-800 mt-1 m-4">TEST ONLY</p>
-            </div>
-          </div>
+          <p>SITBOARD / CB-742</p>
         </div>
       </div>
-      <!-- component -->
+      <div
+        class="flex relative w-[100%] font-cb text-xl justify-between pb-4 pl-8 top-[-28px]"
+      >
+        <p class="">DISPLAY MODE</p>
+        <p class="mr-[85px]">DISPLAY MODE</p>
+      </div>
+
+      <!-- container -->
+      <div
+        class="relative flex flex-col border border-black w-[95.5%] h-[42vw] ml-8 top-[-45px] bg-gray-400 bg-opacity-20"
+      >
+        <div class="bg-black w-[100%] h-[30px] p-2">
+          <p class="text-white text-lg font-cb">random text</p>
+        </div>
+        <div>
+          <!-- component -->
+          <div
+            class="relative bg-gray-400 bg-opacity-30 pb-2 pt-1 pr-1 ml-8 mt-4 font-cb text-[130px] text-white w-[500px] h-[500px]"
+          >
+            <p class="absolute left-[-10px] top-[-20px] z-[1]">&#9700;</p>
+            <div
+              class="relative w-80 bg-gray-400 bg-opacity-40 border border-gray-400 border-opacity-30 shadow-md rounded-sm m-1 w-[485px] h-[480px]"
+            >
+              <!-- Top line -->
+              <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
+              ></div>
+              <!-- Bottom line -->
+              <div
+                class="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
+              ></div>
+              <!-- Left line -->
+              <div
+                class="absolute left-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
+              ></div>
+              <!-- Right line -->
+              <div
+                class="absolute right-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
+              ></div>
+
+              <!-- Actual content -->
+              <div class="bg-gray-400 bg-opacity-20 pb-2 pl-2 pt-1 pr-1">
+                <div
+                  class="relative bg-white m-1.5 border border-gray-400 box-shadow rounded-sm z-[2] w-[460px] h-[460px]"
+                >
+                  <div class="border-gray-800 h-5 w-5 fat-top-left"></div>
+                  <p class="text-3xl font-cb text-gray-800 mt-1 m-4">
+                    TEST ONLY
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- component -->
+        </div>
+      </div>
+      <!-- container -->
     </div>
   </body>
 </html>
