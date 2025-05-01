@@ -6,7 +6,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css" />
     <script src="jscript.js"></script>
-    <title>Document</title>
+    <title>OO OS</title>
+    <link rel="icon" type="image/x-icon" href="assets/0.png" />
   </head>
   <body class="relative min-h-screen bg-gray-200 overflow-hidden">
     <!-- standby -->
@@ -15,7 +16,38 @@
       id="splash"
       class="fixed inset-0 flex items-center justify-center bg-black opacity-100 z-50 transition-opacity duration-1000"
     >
-      <div class="standby flex min-h-screen items-center justify-center">
+      <div class="none">
+        <div class="absolute inset-0 pointer-events-none z-50">
+          <!-- Horizontal lines -->
+          <div
+            class="absolute top-[20%] w-full border-t border-white opacity-30"
+          ></div>
+          <div
+            class="absolute top-[80%] w-full border-t border-white opacity-30"
+          ></div>
+
+          <!-- Vertical lines -->
+          <div
+            class="absolute left-[20%] h-full border-l border-white opacity-30"
+          ></div>
+          <div
+            class="absolute left-[80%] h-full border-l border-white opacity-30"
+          ></div>
+        </div>
+      </div>
+
+      <div class="absolute justify-center">
+        <img
+          id="cb-logo"
+          class="opacity-10 w-[550px] transition-all duration-500 delay-500"
+          src="assets/cb-logo-black-nobg.png"
+          alt=""
+        />
+      </div>
+      <div
+        id="vertical-wrapper"
+        class="standby flex min-h-screen items-center justify-center transition-all duration-500 delay-500"
+      >
         <table class="table-auto border border-white text-white">
           <tr
             id="vertical"
@@ -83,15 +115,17 @@
         class="flex relative w-[100%] font-cb text-xl justify-between pb-4 pl-8 top-[-28px]"
       >
         <p class="">DISPLAY MODE</p>
-        <p class="mr-[85px]">DISPLAY MODE</p>
+        <p class="mr-[4.5%]">DISPLAY MODE</p>
       </div>
 
       <!-- container -->
       <div
         class="relative flex flex-col border border-black w-[95.5%] h-[42vw] ml-8 top-[-45px] bg-gray-400 bg-opacity-20"
       >
-        <div class="bg-black w-[100%] h-[30px] p-2">
-          <p class="text-white text-lg font-cb">random text</p>
+        <div class="bg-black w-[100%] h-[20px] p-2">
+          <p class="relative text-white text-lg font-cb top-[-15px]">
+            random text
+          </p>
         </div>
         <div>
           <!-- component -->
