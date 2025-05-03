@@ -22,7 +22,7 @@ function fadeSplash() {
         setTimeout(() => {
             splash.classList.add("hidden");
         }, 1000); // Match with transition duration (1s)
-    }, 1400); // Delay start by 2 seconds (or whatever you want)
+    }, 1300); // Delay start by 2 seconds (or whatever you want)
 }
 
 let hasShrunk = false;

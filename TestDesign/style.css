@@ -12,6 +12,11 @@
   font-style: normal;
 }
 
+.resize {
+  resize: both;
+  overflow: hidden;
+}
+
 .unselectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="random-text" class="text-white text-3xl font-cb">TEST ONLY</p>
+    <script>
+      const originalText = "TEST ONLY";
+      const replacements = {
+        E: ["3"],
+        O: ["0"],
+        S: ["5", "$"],
+        T: ["7"],
+        L: ["1"],
+        Y: ["¥"],
+        N: ["И"],
+        // fallback for any char
+        A: ["@"],
+      };
+
+      function randomizeText(base) {
+        return base
+          .split("")
+          .map((char) => {
+            const upper = char.toUpperCase();
+            if (replacements[upper] && Math.random() < 0.5) {
+              const options = replacements[upper];
+              return options[Math.floor(Math.random() * options.length)];
+            }
+            return char;
+          })
+          .join("");
+      }
+
+      setInterval(() => {
+        const element = document.getElementById("random-text");
+        element.textContent = randomizeText(originalText);
+      }, 800);
+    </script>
+  </body>
+</html>

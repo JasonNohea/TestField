@@ -9,7 +9,7 @@
     <title>OO OS</title>
     <link rel="icon" type="image/x-icon" href="assets/0.png" />
   </head>
-  <body class="relative min-h-screen bg-gray-200 overflow-hidden">
+  <body class="relative min-h-screen bg-gray-200 overflow-hidden unselectable">
     <!-- standby -->
     <div
       onclick="fadeSplash(); shrunk(); "
@@ -69,7 +69,7 @@
       >
         <p
           id="standby-text"
-          class="absolute left-[195px] top-[18px] blink-text transition-all duration-500 unselectable"
+          class="absolute left-[195px] top-[18px] blink-text transition-all duration-500"
         >
           STANDBY MODE
         </p>
@@ -85,22 +85,22 @@
       <div class="w-[100%] flex justify-between relative top-[-25px]">
         <div class="flex">
           <button
-            class="pressed h-[20px] mode-button p-4 ml-8 m-2 border-4 border-black rounded-xl font-cb text-xl unselectable hover:bg-gray-300 active:scale-95 transition"
+            class="pressed h-[20px] mode-button p-4 ml-8 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-300 active:scale-95 transition"
           >
             MODE 1
           </button>
           <button
-            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl unselectable hover:bg-gray-300 active:scale-95 transition"
+            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-300 active:scale-95 transition"
           >
             MODE 2
           </button>
           <button
-            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl unselectable hover:bg-gray-300 active:scale-95 transition"
+            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-300 active:scale-95 transition"
           >
             MODE 3
           </button>
           <button
-            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl unselectable hover:bg-gray-300 active:scale-95 transition"
+            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-300 active:scale-95 transition"
           >
             MODE 4
           </button>
@@ -120,11 +120,18 @@
 
       <!-- container -->
       <div
-        class="relative flex flex-col border border-black w-[95.5%] h-[42vw] ml-8 top-[-45px] bg-gray-400 bg-opacity-20"
+        class="relative flex flex-col border border-black w-[95.5%] h-[40vw] ml-8 top-[-45px] bg-gray-400 bg-opacity-20"
       >
         <div class="bg-black w-[100%] h-[20px] p-2">
-          <p class="relative text-white text-lg font-cb top-[-15px]">
-            random text
+          <p
+            class="relative text-white text-base font-cb top-[-10px] leading-none tracking-widest"
+          >
+            MISION PARAMETER UPDATED - DATA UPLINK COMPLETE
+          </p>
+          <p
+            class="relative left-[25%] text-white text-sm font-cb top-[-15px] leading-none tracking-widest"
+          >
+            Celestial Being Tactical Matrix Loaded and Active
           </p>
         </div>
         <div>
