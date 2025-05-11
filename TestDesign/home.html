@@ -82,7 +82,7 @@
 
     <!-- Content goes here -->
     <div class="relative z-10 min-h-screen">
-      <div class="w-[100%] flex justify-between relative top-[-25px]">
+      <header class="w-[100%] flex justify-between relative top-[-25px]">
         <div class="flex">
           <button
             class="pressed h-[20px] mode-button p-4 ml-8 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-300 active:scale-95 transition"
@@ -110,7 +110,7 @@
         >
           <p>SITBOARD / CB-742</p>
         </div>
-      </div>
+      </header>
       <div
         class="flex relative w-[100%] font-cb text-xl justify-between pb-4 pl-8 top-[-28px]"
       >
@@ -134,36 +134,40 @@
             Celestial Being Tactical Matrix Loaded and Active
           </p>
         </div>
-        <div>
+        <div id="container">
           <!-- component -->
           <div
-            class="relative bg-gray-400 bg-opacity-30 pb-2 pt-1 pr-1 ml-8 mt-4 font-cb text-[130px] text-white w-[500px] h-[500px]"
+            class="resizable-box absolute bg-gray-400 bg-opacity-30 pb-2 pt-1 pr-1 ml-8 mt-4 font-cb text-[130px] text-white w-[80%] h-[90%]"
           >
-            <p class="absolute left-[-10px] top-[-20px] z-[1]">&#9700;</p>
+            <p class="drag-bar absolute left-[-10px] top-[-20px] z-[1]">
+              &#9700;
+            </p>
             <div
-              class="relative w-80 bg-gray-400 bg-opacity-40 border border-gray-400 border-opacity-30 shadow-md rounded-sm m-1 w-[485px] h-[480px]"
+              class="absolute bg-gray-400 bg-opacity-40 border border-gray-400 border-opacity-30 shadow-md rounded-sm m-1 w-[98.5%] h-[98%]"
             >
               <!-- Top line -->
               <div
-                class="absolute top-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
+                class="resize-handle top absolute top-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
               ></div>
               <!-- Bottom line -->
               <div
-                class="absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
+                class="resize-handle bottom absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
               ></div>
               <!-- Left line -->
               <div
-                class="absolute left-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
+                class="resize-handle left absolute left-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
               ></div>
               <!-- Right line -->
               <div
-                class="absolute right-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
+                class="resize-handle right absolute right-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
               ></div>
 
               <!-- Actual content -->
-              <div class="bg-gray-400 bg-opacity-20 pb-2 pl-2 pt-1 pr-1">
+              <div
+                class="bg-gray-400 bg-opacity-20 pb-2 pl-2 pt-1 pr-1 w-full h-[99%]"
+              >
                 <div
-                  class="relative bg-white m-1.5 border border-gray-400 box-shadow rounded-sm z-[2] w-[460px] h-[460px]"
+                  class="relative bg-white m-1.5 border border-gray-400 box-shadow rounded-sm z-[2] w-[96%] h-full"
                 >
                   <div class="border-gray-800 h-5 w-5 fat-top-left"></div>
                   <p class="text-3xl font-cb text-gray-800 mt-1 m-4">
@@ -178,5 +182,76 @@
       </div>
       <!-- container -->
     </div>
+    <script>
+      //drag and resize
+      const box = document.querySelector(".resizable-box");
+      const dragBar = box.querySelector(".drag-bar");
+
+      let isDragging = false;
+      let isResizing = false;
+      let startX, startY, startWidth, startHeight, startTop, startLeft;
+      let currentHandle = null;
+
+      // DRAGGING
+      dragBar.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        startTop = box.offsetTop;
+        startLeft = box.offsetLeft;
+
+        window.addEventListener("mousemove", drag);
+        window.addEventListener("mouseup", stopActions);
+      });
+
+      function drag(e) {
+        if (!isDragging) return;
+        box.style.top = startTop + (e.clientY - startY) + "px";
+        box.style.left = startLeft + (e.clientX - startX) + "px";
+      }
+
+      // RESIZING
+      document.querySelectorAll(".resize-handle").forEach((handle) => {
+        handle.addEventListener("mousedown", (e) => {
+          e.preventDefault();
+          isResizing = true;
+          currentHandle = handle.classList[1];
+          startX = e.clientX;
+          startY = e.clientY;
+          startWidth = parseInt(window.getComputedStyle(box).width, 10);
+          startHeight = parseInt(window.getComputedStyle(box).height, 10);
+          startTop = box.offsetTop;
+          startLeft = box.offsetLeft;
+
+          window.addEventListener("mousemove", resize);
+          window.addEventListener("mouseup", stopActions);
+        });
+      });
+
+      function resize(e) {
+        if (!isResizing) return;
+        if (currentHandle === "right") {
+          box.style.width = startWidth + (e.clientX - startX) + "px";
+        } else if (currentHandle === "left") {
+          box.style.width = startWidth - (e.clientX - startX) + "px";
+          box.style.left = startLeft + (e.clientX - startX) + "px";
+        } else if (currentHandle === "bottom") {
+          box.style.height = startHeight + (e.clientY - startY) + "px";
+        } else if (currentHandle === "top") {
+          box.style.height = startHeight - (e.clientY - startY) + "px";
+          box.style.top = startTop + (e.clientY - startY) + "px";
+        }
+      }
+
+      function stopActions() {
+        isDragging = false;
+        isResizing = false;
+        currentHandle = null;
+        window.removeEventListener("mousemove", drag);
+        window.removeEventListener("mousemove", resize);
+        window.removeEventListener("mouseup", stopActions);
+      }
+    </script>
   </body>
 </html>

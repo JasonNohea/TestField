@@ -40,7 +40,7 @@
 }
 
 .box-shadow {
-  box-shadow: -10px 8px rgba(70, 70, 70, 0.5);
+  box-shadow: -10px 6px rgba(70, 70, 70, 0.5);
 }
 
 .fat-top-left {
@@ -80,4 +80,13 @@
 
 .none {
   display: none;
+}
+
+.resize-handle.left,
+.resize-handle.right {
+  cursor: ew-resize;
+}
+.resize-handle.top,
+.resize-handle.bottom {
+  cursor: ns-resize;
 }

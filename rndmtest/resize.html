@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+      /* html {
+        cursor: url("customcursor.png") 50 50, auto;
+      } */
+      #resizable-box {
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        background: rgba(
+          156,
+          163,
+          175,
+          0.3
+        ); /* Tailwind's bg-gray-400 bg-opacity-30 */
+        font-family: sans-serif;
+        color: white;
+        width: 300px;
+        height: 300px;
+      }
+
+      .resize-handle {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.5);
+        z-index: 10;
+      }
+
+      .resize-handle.top,
+      .resize-handle.bottom {
+        height: 6px;
+        left: 0;
+        right: 0;
+        cursor: ns-resize;
+      }
+
+      .resize-handle.left,
+      .resize-handle.right {
+        width: 6px;
+        top: 0;
+        bottom: 0;
+        cursor: ew-resize;
+      }
+
+      .resize-handle.top {
+        top: 0;
+      }
+      .resize-handle.bottom {
+        bottom: 0;
+      }
+      .resize-handle.left {
+        left: 0;
+      }
+      .resize-handle.right {
+        right: 0;
+      }
+
+      .drag-bar {
+        height: 30px;
+        background: rgba(0, 0, 0, 0.6);
+        cursor: move;
+        padding: 5px 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="resizable-box">
+      <div class="drag-bar">Drag Me</div>
+
+      <!-- Resize handles -->
+      <div class="resize-handle top"></div>
+      <div class="resize-handle right"></div>
+      <div class="resize-handle bottom"></div>
+      <div class="resize-handle left"></div>
+
+      <div class="p-4">
+        <p>Resizable and Draggable Box</p>
+      </div>
+    </div>
+
+    <script>
+      const box = document.getElementById("resizable-box");
+      const dragBar = box.querySelector(".drag-bar");
+
+      let isDragging = false;
+      let isResizing = false;
+      let startX, startY, startWidth, startHeight, startTop, startLeft;
+      let currentHandle = null;
+
+      // DRAGGING
+      dragBar.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        startTop = box.offsetTop;
+        startLeft = box.offsetLeft;
+
+        window.addEventListener("mousemove", drag);
+        window.addEventListener("mouseup", stopActions);
+      });
+
+      function drag(e) {
+        if (!isDragging) return;
+        box.style.top = startTop + (e.clientY - startY) + "px";
+        box.style.left = startLeft + (e.clientX - startX) + "px";
+      }
+
+      // RESIZING
+      document.querySelectorAll(".resize-handle").forEach((handle) => {
+        handle.addEventListener("mousedown", (e) => {
+          e.preventDefault();
+          isResizing = true;
+          currentHandle = handle.classList[1];
+          startX = e.clientX;
+          startY = e.clientY;
+          startWidth = parseInt(window.getComputedStyle(box).width, 10);
+          startHeight = parseInt(window.getComputedStyle(box).height, 10);
+          startTop = box.offsetTop;
+          startLeft = box.offsetLeft;
+
+          window.addEventListener("mousemove", resize);
+          window.addEventListener("mouseup", stopActions);
+        });
+      });
+
+      function resize(e) {
+        if (!isResizing) return;
+        if (currentHandle === "right") {
+          box.style.width = startWidth + (e.clientX - startX) + "px";
+        } else if (currentHandle === "left") {
+          box.style.width = startWidth - (e.clientX - startX) + "px";
+          box.style.left = startLeft + (e.clientX - startX) + "px";
+        } else if (currentHandle === "bottom") {
+          box.style.height = startHeight + (e.clientY - startY) + "px";
+        } else if (currentHandle === "top") {
+          box.style.height = startHeight - (e.clientY - startY) + "px";
+          box.style.top = startTop + (e.clientY - startY) + "px";
+        }
+      }
+
+      function stopActions() {
+        isDragging = false;
+        isResizing = false;
+        currentHandle = null;
+        window.removeEventListener("mousemove", drag);
+        window.removeEventListener("mousemove", resize);
+        window.removeEventListener("mouseup", stopActions);
+      }
+    </script>
+  </body>
+</html>
