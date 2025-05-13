@@ -126,7 +126,7 @@
           <p
             class="relative text-white text-base font-cb top-[-10px] leading-none tracking-widest"
           >
-            MISION PARAMETER UPDATED - DATA UPLINK COMPLETE
+            MISSION PARAMETER UPDATED - DATA UPLINK COMPLETE
           </p>
           <p
             class="relative left-[25%] text-white text-sm font-cb top-[-15px] leading-none tracking-widest"
@@ -134,16 +134,16 @@
             Celestial Being Tactical Matrix Loaded and Active
           </p>
         </div>
-        <div id="container">
+        <div id="container" class="w-[100%] h-[100%]">
           <!-- component -->
           <div
-            class="resizable-box absolute bg-gray-400 bg-opacity-30 pb-2 pt-1 pr-1 ml-8 mt-4 font-cb text-[130px] text-white w-[80%] h-[90%]"
+            class="resizable-box absolute bg-gray-400 bg-opacity-30 pb-2 pt-1 pr-1 ml-8 mt-4 font-cb text-[130px] text-white w-[60%] h-[90%]"
           >
-            <p class="drag-bar absolute left-[-10px] top-[-20px] z-[1]">
+            <p class="drag-bar absolute left-[-10px] top-[-20px] z-[1] h-20">
               &#9700;
             </p>
             <div
-              class="absolute bg-gray-400 bg-opacity-40 border border-gray-400 border-opacity-30 shadow-md rounded-sm m-1 w-[98.5%] h-[98%]"
+              class="absolute bg-gray-400 bg-opacity-40 border border-gray-400 border-opacity-30 shadow-md rounded-sm m-1 w-[99%] h-[98%]"
             >
               <!-- Top line -->
               <div
@@ -167,7 +167,7 @@
                 class="bg-gray-400 bg-opacity-20 pb-2 pl-2 pt-1 pr-1 w-full h-[99%]"
               >
                 <div
-                  class="relative bg-white m-1.5 border border-gray-400 box-shadow rounded-sm z-[2] w-[96%] h-full"
+                  class="relative bg-white m-1.5 border border-gray-400 box-shadow rounded-sm z-[2] w-[98%] h-[98%]"
                 >
                   <div class="border-gray-800 h-5 w-5 fat-top-left"></div>
                   <p class="text-3xl font-cb text-gray-800 mt-1 m-4">
@@ -207,8 +207,28 @@
 
       function drag(e) {
         if (!isDragging) return;
-        box.style.top = startTop + (e.clientY - startY) + "px";
-        box.style.left = startLeft + (e.clientX - startX) + "px";
+
+        const container = document.getElementById("container");
+
+        const containerRect = container.getBoundingClientRect();
+        const boxRect = box.getBoundingClientRect();
+
+        let newLeft = startLeft + (e.clientX - startX);
+        let newTop = startTop + (e.clientY - startY);
+
+        // Clamp horizontal movement
+        newLeft = Math.max(
+          0,
+          Math.min(newLeft, container.clientWidth - box.offsetWidth)
+        );
+        // Clamp vertical movement
+        newTop = Math.max(
+          0,
+          Math.min(newTop, container.clientHeight - box.offsetHeight)
+        );
+
+        box.style.left = newLeft + "px";
+        box.style.top = newTop + "px";
       }
 
       // RESIZING

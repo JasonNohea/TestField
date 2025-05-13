@@ -90,3 +90,10 @@
 .resize-handle.bottom {
   cursor: ns-resize;
 }
+
+.resizable-box {
+  max-width: 1200px;
+  max-height: 470px;
+  min-height: 320px;
+  min-width: 600px;
+}
