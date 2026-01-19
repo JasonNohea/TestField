@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typing and Deleting Animation</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      .typing-container {
+        font-size: 3rem;
+        display: flex;
+        align-items: center;
+        height: 1.2em; /* Prevents layout shift */
+        white-space: nowrap; /* Keeps the text on one line */
+      }
+
+      .cursor {
+        font-weight: 100;
+        margin-left: 5px;
+        animation: blink 1s step-end infinite;
+      }
+
+      @keyframes blink {
+        from,
+        to {
+          color: transparent;
+        }
+        50% {
+          color: black;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="typing-container">
+      <span id="typing-text"></span><span class="cursor">|</span>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const words = [
+          "Hello, World!",
+          "I'm a typing animation.",
+          "This is cool!",
+          "What's up?",
+        ];
+        let wordIndex = 0;
+        let charIndex = 0;
+        const typingTextElement = document.getElementById("typing-text");
+        let isDeleting = false;
+
+        function type() {
+          const currentWord = words[wordIndex];
+          let displayedText = currentWord.substring(0, charIndex);
+          typingTextElement.textContent = displayedText;
+
+          if (!isDeleting) {
+            // Typing
+            charIndex++;
+            if (charIndex > currentWord.length) {
+              isDeleting = true;
+              // Pause before deleting
+              setTimeout(type, 1500);
+              return;
+            }
+          } else {
+            // Deleting
+            charIndex--;
+            if (charIndex < 0) {
+              isDeleting = false;
+              wordIndex = (wordIndex + 1) % words.length; // Move to the next word
+              // Pause before typing next word
+              setTimeout(type, 500);
+              return;
+            }
+          }
+
+          // Determine speed of animation
+          let typingSpeed = isDeleting ? 75 : 150;
+          setTimeout(type, typingSpeed);
+        }
+
+        // Start the animation
+        type();
+      });
+    </script>
+  </body>
+</html>

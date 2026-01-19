@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,7 +12,10 @@
   <body class="relative min-h-screen bg-gray-200 overflow-hidden unselectable">
     <!-- standby -->
     <div
-      onclick="fadeSplash(); shrunk(); "
+      onclick="
+        fadeSplash();
+        shrunk();
+      "
       id="splash"
       class="fixed inset-0 flex items-center justify-center bg-black opacity-100 z-50 transition-opacity duration-1000"
     >
@@ -120,24 +123,26 @@
 
       <!-- container -->
       <div
-        class="relative flex flex-col border border-black w-[95.5%] h-[40vw] ml-8 top-[-45px] bg-gray-400 bg-opacity-20"
+        id="matrix-frame"
+        class="relative flex flex-col border border-black w-[0px] h-[20px] ml-8 top-[-45px] bg-gray-400 bg-opacity-20"
       >
         <div class="bg-black w-[100%] h-[20px] p-2">
           <p
-            class="relative text-white text-base font-cb top-[-10px] leading-none tracking-widest"
+            class="header-frame relative text-white text-base font-cb top-[-10px] leading-none tracking-widest opacity-0"
           >
             MISSION PARAMETER UPDATED - DATA UPLINK COMPLETE
           </p>
           <p
-            class="relative left-[25%] text-white text-sm font-cb top-[-15px] leading-none tracking-widest"
+            class="header-frame relative left-[25%] text-white text-sm font-cb top-[-15px] leading-none tracking-widest opacity-0"
           >
             Celestial Being Tactical Matrix Loaded and Active
           </p>
         </div>
-        <div id="container" class="w-[100%] h-[100%]">
+        <div id="container" class="w-[100%] h-[100%] mb-2 transform-gpu">
           <!-- component -->
           <div
-            class="resizable-box absolute bg-gray-400 bg-opacity-30 pb-2 pt-1 pr-1 ml-8 mt-4 font-cb text-[130px] text-white w-[60%] h-[90%]"
+            id="file"
+            class="none resizable-box absolute bg-gray-400 bg-opacity-30 pb-2 pt-1 pr-1 font-cb text-[130px] text-white w-[60%] h-[90%] left-5 top-3"
           >
             <p class="drag-bar absolute left-[-10px] top-[-20px] z-[1] h-20">
               &#9700;
@@ -219,12 +224,12 @@
         // Clamp horizontal movement
         newLeft = Math.max(
           0,
-          Math.min(newLeft, container.clientWidth - box.offsetWidth)
+          Math.min(newLeft, container.clientWidth - box.offsetWidth),
         );
         // Clamp vertical movement
         newTop = Math.max(
           0,
-          Math.min(newTop, container.clientHeight - box.offsetHeight)
+          Math.min(newTop, container.clientHeight - box.offsetHeight),
         );
 
         box.style.left = newLeft + "px";
@@ -251,16 +256,54 @@
 
       function resize(e) {
         if (!isResizing) return;
+
+        const container = document.getElementById("container");
+        const minWidth = 50;
+        const minHeight = 50;
+
+        // 1. Calculate how much the mouse has moved since we started
+        let dx = e.clientX - startX;
+        let dy = e.clientY - startY;
+
         if (currentHandle === "right") {
-          box.style.width = startWidth + (e.clientX - startX) + "px";
-        } else if (currentHandle === "left") {
-          box.style.width = startWidth - (e.clientX - startX) + "px";
-          box.style.left = startLeft + (e.clientX - startX) + "px";
+          let maxWidth = container.clientWidth - startLeft;
+          let newWidth = Math.max(
+            minWidth,
+            Math.min(startWidth + dx, maxWidth),
+          );
+          box.style.width = newWidth + "px";
         } else if (currentHandle === "bottom") {
-          box.style.height = startHeight + (e.clientY - startY) + "px";
+          let maxHeight = container.clientHeight - startTop;
+          let newHeight = Math.max(
+            minHeight,
+            Math.min(startHeight + dy, maxHeight),
+          );
+          box.style.height = newHeight + "px";
+        } else if (currentHandle === "left") {
+          // Max movement left is the distance to the container edge (startLeft)
+          // Max movement right is limited by the minWidth
+          let maxDeltaLeft = startLeft;
+          let maxDeltaRight = startWidth - minWidth;
+
+          // Clamp the mouse movement
+          let constrainedDx = Math.max(
+            -maxDeltaLeft,
+            Math.min(dx, maxDeltaRight),
+          );
+
+          box.style.width = startWidth - constrainedDx + "px";
+          box.style.left = startLeft + constrainedDx + "px";
         } else if (currentHandle === "top") {
-          box.style.height = startHeight - (e.clientY - startY) + "px";
-          box.style.top = startTop + (e.clientY - startY) + "px";
+          // Max movement up is the distance to the container top (startTop)
+          // Max movement down is limited by the minHeight
+          let maxDeltaUp = startTop;
+          let maxDeltaDown = startHeight - minHeight;
+
+          // Clamp the mouse movement
+          let constrainedDy = Math.max(-maxDeltaUp, Math.min(dy, maxDeltaDown));
+
+          box.style.height = startHeight - constrainedDy + "px";
+          box.style.top = startTop + constrainedDy + "px";
         }
       }
 

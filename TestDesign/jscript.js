@@ -13,17 +13,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function fadeSplash() {
     const splash = document.getElementById("splash");
+    const frame = document.getElementById("matrix-frame");
+    const headertext = document.getElementsByClassName("header-frame");
+    const file = document.getElementById("file");
 
-    // Delay the fade effect
+    // 1. The Logo/Shrink animation starts immediately via the onclick="shrunk()"
+
+    // 2. FADE OUT THE SPLASH
+    // We wait 1200ms (to let the logo show at 80% opacity first)
     setTimeout(() => {
-        splash.classList.add("opacity-0");
+        if (splash) {
+            // CRITICAL: Remove the opacity-100 so opacity-0 works
+            splash.classList.remove("opacity-100");
+            splash.classList.add("opacity-0");
 
-        // Then hide after the fade finishes
-        setTimeout(() => {
-            splash.classList.add("hidden");
-        }, 1000); // Match with transition duration (1s)
-    }, 1300); // Delay start by 2 seconds (or whatever you want)
+            // Completely remove from view after the 1s transition finishes
+            setTimeout(() => {
+                splash.classList.add("hidden");
+            }, 1000);
+        }
+    }, 1200);
+
+    // 3. START MAIN UI ANIMATIONS
+    // Width expansion
+    setTimeout(() => {
+        if (frame) {
+            frame.classList.add("width-animate");
+        }
+    }, 2200);
+
+    // Height expansion & Text reveal
+    setTimeout(() => {
+        if (frame) {
+            frame.classList.add("height-animate");
+        }
+        if (headertext.length > 0) {
+            for (let i = 0; i < headertext.length; i++) {
+                headertext[i].classList.add("fade-in-active");
+            }
+        }
+    }, 3200);
 }
+
 
 let hasShrunk = false;
 

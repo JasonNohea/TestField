@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multiple Hover Trigger Animation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+      }
+
+      .main-container {
+        width: 400px;
+        height: 400px;
+        border: 2px solid #333;
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .hover-trigger {
+        width: 50%;
+        height: 50%;
+        border: 1px solid #ddd;
+        box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .hover-trigger:hover {
+        background-color: #e0e0e0;
+      }
+
+      .animated-element {
+        width: 100px;
+        height: 100px;
+        background-color: #3498db;
+        position: absolute;
+        top: calc(50% - 50px);
+        left: calc(50% - 50px);
+        transition: transform 0.5s ease, background-color 0.5s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: bold;
+        border-radius: 10px;
+      }
+
+      /* Animation logic: use the general sibling combinator (~) */
+
+      /* Trigger 1: Move to top-left and change color */
+      .trigger-1:hover ~ .animated-element {
+        transform: translate(-100px, -100px);
+        background-color: #e74c3c;
+      }
+
+      /* Trigger 2: Move to top-right and change color */
+      .trigger-2:hover ~ .animated-element {
+        transform: translate(100px, -100px);
+        background-color: #2ecc71;
+      }
+
+      /* Trigger 3: Move to bottom-left and change color */
+      .trigger-3:hover ~ .animated-element {
+        transform: translate(-100px, 100px);
+        background-color: #f1c40f;
+      }
+
+      /* Trigger 4 (implicit): Move to bottom-right and change color */
+      .trigger-4:hover ~ .animated-element {
+        transform: translate(100px, 100px);
+        background-color: #9b59b6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="hover-trigger trigger-1"></div>
+      <div class="hover-trigger trigger-2"></div>
+      <div class="hover-trigger trigger-3"></div>
+      <div class="hover-trigger trigger-4"></div>
+
+      <div class="animated-element">Hover Me</div>
+    </div>
+  </body>
+</html>

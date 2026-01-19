@@ -12,6 +12,11 @@
   font-style: normal;
 }
 
+#splash {
+  transition: opacity 1000ms ease-in-out;
+  will-change: opacity;
+}
+
 .resize {
   resize: both;
   overflow: hidden;
@@ -70,6 +75,53 @@
   }
 }
 
+@keyframes widthExpand {
+  from {
+    width: 0px;
+    /* opacity: 0; */
+  }
+  to {
+    width: 95.5%;
+    /* opacity: 1; */
+  }
+}
+
+@keyframes heightExpand {
+  from {
+    height: 20px;
+    width: 95.5%;
+    /* opacity: 0; */
+  }
+  to {
+    height: 40vw; /* Final height of your container */
+    width: 95.5%;
+    /* opacity: 1; */
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.width-animate {
+  animation: widthExpand 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  visibility: visible !important;
+}
+
+.height-animate {
+  animation: heightExpand 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  visibility: visible !important;
+}
+
+.fade-in-active {
+  animation: fade-in 1.5s ease-in forwards;
+}
+
 .standby {
   animation: maxOff 1s ease infinite alternate;
 }
@@ -92,8 +144,9 @@
 }
 
 .resizable-box {
+  box-sizing: border-box;
   max-width: 1200px;
   max-height: 470px;
   min-height: 320px;
-  min-width: 600px;
+  min-width: 400px;
 }
