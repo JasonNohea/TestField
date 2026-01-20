@@ -12,6 +12,17 @@
   font-style: normal;
 }
 
+img {
+  /* Prevents the 'ghost' image from appearing when dragging */
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+
+  /* Prevents the blue highlight/selection box */
+  user-select: none;
+}
+
 #splash {
   transition: opacity 1000ms ease-in-out;
   will-change: opacity;
@@ -106,6 +117,31 @@
   to {
     opacity: 1;
   }
+}
+
+@keyframes tactical-corner-expand {
+  0% {
+    /* A tiny square in the top-left */
+    clip-path: inset(0 100% 100% 0);
+    opacity: 0;
+  }
+  /* Optional: Expand width first for a more "grid" feel */
+  40% {
+    clip-path: inset(0 0 99% 0);
+    opacity: 1;
+  }
+  100% {
+    /* Full reveal */
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+.window-popup {
+  display: block !important;
+  /* Ensure the animation knows to anchor to the top-left */
+  transform-origin: top left;
+  animation: tactical-corner-expand 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .width-animate {

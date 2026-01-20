@@ -17,32 +17,23 @@ function fadeSplash() {
     const headertext = document.getElementsByClassName("header-frame");
     const file = document.getElementById("file");
 
-    // 1. The Logo/Shrink animation starts immediately via the onclick="shrunk()"
-
-    // 2. FADE OUT THE SPLASH
-    // We wait 1200ms (to let the logo show at 80% opacity first)
     setTimeout(() => {
         if (splash) {
-            // CRITICAL: Remove the opacity-100 so opacity-0 works
             splash.classList.remove("opacity-100");
             splash.classList.add("opacity-0");
 
-            // Completely remove from view after the 1s transition finishes
             setTimeout(() => {
                 splash.classList.add("hidden");
             }, 1000);
         }
     }, 1200);
 
-    // 3. START MAIN UI ANIMATIONS
-    // Width expansion
     setTimeout(() => {
         if (frame) {
             frame.classList.add("width-animate");
         }
-    }, 2200);
+    }, 2000);
 
-    // Height expansion & Text reveal
     setTimeout(() => {
         if (frame) {
             frame.classList.add("height-animate");
@@ -50,11 +41,52 @@ function fadeSplash() {
         if (headertext.length > 0) {
             for (let i = 0; i < headertext.length; i++) {
                 headertext[i].classList.add("fade-in-active");
+
+                scrambleText(headertext[i]);
             }
         }
     }, 3200);
+
+    setTimeout(() => {
+        if (file) {
+            file.classList.remove("none"); // Remove your 'none' class
+            file.classList.add("window-popup");
+
+            // If you want the "TEST ONLY" text inside the window 
+            // to scramble again when the window pops up:
+            const testText = file.querySelector(".text-3xl");
+            if (testText) {
+                scrambleText(testText);
+            }
+        }
+    }, 3800); // 3200ms (Height start) + 600ms delay
 }
 
+function scrambleText(element) {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%&#$@+*";
+    const originalText = element.innerText;
+    let iteration = 0;
+
+    const interval = setInterval(() => {
+        element.innerText = originalText
+            .split("")
+            .map((char, index) => {
+                if (index < iteration) {
+                    return originalText[index]; // Correct letter
+                }
+                // Random character
+                return characters[Math.floor(Math.random() * characters.length)];
+            })
+            .join("");
+
+        if (iteration >= originalText.length) {
+            clearInterval(interval);
+        }
+
+        // Speed: 1/3 means it takes 3 "ticks" to lock one letter
+        iteration += 1 / 1.2;
+    }, 40); // 40ms per update for a high-tech feel
+}
 
 let hasShrunk = false;
 
