@@ -88,28 +88,28 @@
       <header class="w-[100%] flex justify-between relative top-[-25px]">
         <div class="flex">
           <button
-            class="pressed h-[20px] mode-button p-4 ml-8 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-300 active:scale-95 transition"
+            class="pressed h-[20px] mode-button p-4 ml-8 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-400 active:scale-95 transition"
           >
             MODE 1
           </button>
           <button
-            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-300 active:scale-95 transition"
+            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-400 active:scale-95 transition"
           >
             MODE 2
           </button>
           <button
-            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-300 active:scale-95 transition"
+            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-400 active:scale-95 transition"
           >
             MODE 3
           </button>
           <button
-            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-300 active:scale-95 transition"
+            class="mode-button h-[20px] p-4 m-2 border-4 border-black rounded-xl font-cb text-xl hover:bg-gray-400 active:scale-95 transition"
           >
             MODE 4
           </button>
         </div>
         <div
-          class="p-4 h-[20px] m-2 mr-7 border-4 border-black rounded-xl font-cb text-xl w-[230px]"
+          class="p-4 h-[20px] m-2 mr-7 border-4 border-black rounded-xl font-cb text-xl w-[230px] bg-gray-200"
         >
           <p>SITBOARD / GN-001</p>
         </div>
@@ -128,7 +128,7 @@
       >
         <div class="bg-black w-[100%] h-[20px] p-2">
           <p
-            class="header-frame relative text-white text-base font-cb top-[-10px] leading-none tracking-widest opacity-0"
+            class="header-frame relative text-white font-cb top-[-10px] leading-none tracking-widest opacity-0"
           >
             GUNDAM EXIA [GN-001] - STANDBY - DATA UPLINK COMPLETE
           </p>
@@ -139,8 +139,8 @@
           </p>
         </div>
         <div id="container" class="w-[100%] h-[100%] mb-2 transform-gpu">
-          <!-- component -->
-          <div
+          <!-- template -->
+          <!-- <div
             id="file"
             class="none resizable-box absolute bg-gray-400 bg-opacity-30 pb-2 pt-1 pr-1 font-cb text-[130px] text-white w-[60%] h-[90%] left-5 top-3"
           >
@@ -150,24 +150,22 @@
             <div
               class="absolute bg-gray-400 bg-opacity-40 border border-gray-400 border-opacity-30 shadow-md rounded-sm m-1 w-[99%] h-[98%]"
             >
-              <!-- Top line -->
               <div
                 class="resize-handle top absolute top-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
               ></div>
-              <!-- Bottom line -->
+
               <div
                 class="resize-handle bottom absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
               ></div>
-              <!-- Left line -->
+
               <div
                 class="resize-handle left absolute left-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
               ></div>
-              <!-- Right line -->
+
               <div
                 class="resize-handle right absolute right-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
               ></div>
 
-              <!-- Actual content -->
               <div
                 class="bg-gray-400 bg-opacity-20 pb-2 pl-2 pt-1 pr-1 w-full h-[99%]"
               >
@@ -181,6 +179,109 @@
                 </div>
               </div>
             </div>
+          </div> -->
+          <!-- component I-->
+          <div
+            id="file"
+            class="none resizable-box absolute bg-gray-400 bg-opacity-30 pb-2 pt-1 pr-1 font-cb text-[130px] text-white w-[60%] h-[90%] left-5 top-3"
+          >
+            <div
+              class="absolute bg-gray-400 bg-opacity-40 border border-gray-400 border-opacity-30 shadow-md rounded-sm m-1 w-[99%] h-[96%]"
+            >
+              <!-- Top line -->
+              <div
+                class="top absolute top-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
+              ></div>
+              <!-- Bottom line -->
+              <div
+                class="bottom absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
+              ></div>
+              <!-- Left line -->
+              <div
+                class="left absolute left-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
+              ></div>
+              <!-- Right line -->
+              <div
+                class="right absolute right-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
+              ></div>
+
+              <!-- Actual content -->
+              <div
+                class="bg-gray-400 bg-opacity-20 pb-2 pl-2 pt-1 pr-1 w-full h-[99%]"
+              >
+                <div
+                  class="relative bg-white m-1.5 box-shadow rounded-sm z-[2] w-[98%] h-[98%]"
+                >
+                  <div class="bg-black w-[100%] h-[25px] p-2 flex-col">
+                    <p
+                      class="header-frame relative text-white text-base font-cb top-[-25px] leading-none tracking-widest opacity-0 h-[25px] w-[100%]"
+                    >
+                      COMM SYSTEM ONLINE - SECURE LINK ESTABLISHED
+                    </p>
+                    <p
+                      class="header-frame relative left-[15%] text-white text-sm font-cb top-[-35px] leading-none tracking-widest opacity-0"
+                    >
+                      Connection Stable | Signal Strength: 98%
+                    </p>
+                  </div>
+                  <p class="text-3xl font-cb text-gray-800 mt-1 m-4">
+                    TEST ONLY
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- component II -->
+          <div
+            id="file-alt"
+            class="none resizable-box absolute bg-gray-400 bg-opacity-30 pb-2 pt-1 pr-1 font-cb text-[130px] text-white w-[36%] h-[48%] right-7 top-3 invisible"
+          >
+            <div
+              class="absolute bg-gray-400 bg-opacity-40 border border-gray-400 border-opacity-30 shadow-md rounded-sm m-1 w-[99%] h-[96%]"
+            >
+              <!-- Top line -->
+              <div
+                class="top absolute top-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
+              ></div>
+              <!-- Bottom line -->
+              <div
+                class="bottom absolute bottom-0 left-1/2 -translate-x-1/2 w-2.5 h-[2px] bg-white"
+              ></div>
+              <!-- Left line -->
+              <div
+                class="left absolute left-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
+              ></div>
+              <!-- Right line -->
+              <div
+                class="right absolute right-0 top-1/2 -translate-y-1/2 h-2.5 w-[2px] bg-white"
+              ></div>
+
+              <!-- Actual content -->
+              <div
+                class="bg-gray-400 bg-opacity-20 pb-2 pl-2 pt-1 pr-1 w-full h-[99%]"
+              >
+                <div
+                  class="relative bg-white m-1.5 box-shadow rounded-sm z-[2] w-[98%] h-[98%]"
+                >
+                  <div class="bg-black w-[100%] h-[25px] p-2">
+                    <p
+                      class="header-frame relative text-white text-base font-cb top-[-25px] leading-none tracking-widest opacity-0"
+                    >
+                      TEMPORARY DATA FILE - READONLY MODE
+                    </p>
+                    <p
+                      class="header-frame relative left-[15%] text-white text-sm font-cb top-[-40px] leading-none tracking-widest opacity-0"
+                    >
+                      File Size: 1.24 MB | Last Modified: -
+                    </p>
+                  </div>
+                  <!-- <div class="border-gray-800 h-5 w-5 fat-top-left"></div> -->
+                  <p class="text-sm font-selee-2 text-gray-700 mt-1 m-4">
+                    Test Only
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
           <!-- component -->
         </div>
@@ -188,133 +289,133 @@
       <!-- container -->
     </div>
     <script>
-      //drag and resize
-      const box = document.querySelector(".resizable-box");
-      const dragBar = box.querySelector(".drag-bar");
+      // //drag and resize
+      // const box = document.querySelector(".resizable-box");
+      // const dragBar = box.querySelector(".drag-bar");
 
-      let isDragging = false;
-      let isResizing = false;
-      let startX, startY, startWidth, startHeight, startTop, startLeft;
-      let currentHandle = null;
+      // let isDragging = false;
+      // let isResizing = false;
+      // let startX, startY, startWidth, startHeight, startTop, startLeft;
+      // let currentHandle = null;
 
-      // DRAGGING
-      dragBar.addEventListener("mousedown", (e) => {
-        e.preventDefault();
-        isDragging = true;
-        startX = e.clientX;
-        startY = e.clientY;
-        startTop = box.offsetTop;
-        startLeft = box.offsetLeft;
+      // // DRAGGING
+      // dragBar.addEventListener("mousedown", (e) => {
+      //   e.preventDefault();
+      //   isDragging = true;
+      //   startX = e.clientX;
+      //   startY = e.clientY;
+      //   startTop = box.offsetTop;
+      //   startLeft = box.offsetLeft;
 
-        window.addEventListener("mousemove", drag);
-        window.addEventListener("mouseup", stopActions);
-      });
+      //   window.addEventListener("mousemove", drag);
+      //   window.addEventListener("mouseup", stopActions);
+      // });
 
-      function drag(e) {
-        if (!isDragging) return;
+      // function drag(e) {
+      //   if (!isDragging) return;
 
-        const container = document.getElementById("container");
+      //   const container = document.getElementById("container");
 
-        const containerRect = container.getBoundingClientRect();
-        const boxRect = box.getBoundingClientRect();
+      //   const containerRect = container.getBoundingClientRect();
+      //   const boxRect = box.getBoundingClientRect();
 
-        let newLeft = startLeft + (e.clientX - startX);
-        let newTop = startTop + (e.clientY - startY);
+      //   let newLeft = startLeft + (e.clientX - startX);
+      //   let newTop = startTop + (e.clientY - startY);
 
-        // Clamp horizontal movement
-        newLeft = Math.max(
-          0,
-          Math.min(newLeft, container.clientWidth - box.offsetWidth),
-        );
-        // Clamp vertical movement
-        newTop = Math.max(
-          0,
-          Math.min(newTop, container.clientHeight - box.offsetHeight),
-        );
+      //   // Clamp horizontal movement
+      //   newLeft = Math.max(
+      //     0,
+      //     Math.min(newLeft, container.clientWidth - box.offsetWidth),
+      //   );
+      //   // Clamp vertical movement
+      //   newTop = Math.max(
+      //     0,
+      //     Math.min(newTop, container.clientHeight - box.offsetHeight),
+      //   );
 
-        box.style.left = newLeft + "px";
-        box.style.top = newTop + "px";
-      }
+      //   box.style.left = newLeft + "px";
+      //   box.style.top = newTop + "px";
+      // }
 
-      // RESIZING
-      document.querySelectorAll(".resize-handle").forEach((handle) => {
-        handle.addEventListener("mousedown", (e) => {
-          e.preventDefault();
-          isResizing = true;
-          currentHandle = handle.classList[1];
-          startX = e.clientX;
-          startY = e.clientY;
-          startWidth = parseInt(window.getComputedStyle(box).width, 10);
-          startHeight = parseInt(window.getComputedStyle(box).height, 10);
-          startTop = box.offsetTop;
-          startLeft = box.offsetLeft;
+      // // RESIZING
+      // document.querySelectorAll(".resize-handle").forEach((handle) => {
+      //   handle.addEventListener("mousedown", (e) => {
+      //     e.preventDefault();
+      //     isResizing = true;
+      //     currentHandle = handle.classList[1];
+      //     startX = e.clientX;
+      //     startY = e.clientY;
+      //     startWidth = parseInt(window.getComputedStyle(box).width, 10);
+      //     startHeight = parseInt(window.getComputedStyle(box).height, 10);
+      //     startTop = box.offsetTop;
+      //     startLeft = box.offsetLeft;
 
-          window.addEventListener("mousemove", resize);
-          window.addEventListener("mouseup", stopActions);
-        });
-      });
+      //     window.addEventListener("mousemove", resize);
+      //     window.addEventListener("mouseup", stopActions);
+      //   });
+      // });
 
-      function resize(e) {
-        if (!isResizing) return;
+      // function resize(e) {
+      //   if (!isResizing) return;
 
-        const container = document.getElementById("container");
-        const minWidth = 50;
-        const minHeight = 50;
+      //   const container = document.getElementById("container");
+      //   const minWidth = 50;
+      //   const minHeight = 50;
 
-        // 1. Calculate how much the mouse has moved since we started
-        let dx = e.clientX - startX;
-        let dy = e.clientY - startY;
+      //   // 1. Calculate how much the mouse has moved since we started
+      //   let dx = e.clientX - startX;
+      //   let dy = e.clientY - startY;
 
-        if (currentHandle === "right") {
-          let maxWidth = container.clientWidth - startLeft;
-          let newWidth = Math.max(
-            minWidth,
-            Math.min(startWidth + dx, maxWidth),
-          );
-          box.style.width = newWidth + "px";
-        } else if (currentHandle === "bottom") {
-          let maxHeight = container.clientHeight - startTop;
-          let newHeight = Math.max(
-            minHeight,
-            Math.min(startHeight + dy, maxHeight),
-          );
-          box.style.height = newHeight + "px";
-        } else if (currentHandle === "left") {
-          // Max movement left is the distance to the container edge (startLeft)
-          // Max movement right is limited by the minWidth
-          let maxDeltaLeft = startLeft;
-          let maxDeltaRight = startWidth - minWidth;
+      //   if (currentHandle === "right") {
+      //     let maxWidth = container.clientWidth - startLeft;
+      //     let newWidth = Math.max(
+      //       minWidth,
+      //       Math.min(startWidth + dx, maxWidth),
+      //     );
+      //     box.style.width = newWidth + "px";
+      //   } else if (currentHandle === "bottom") {
+      //     let maxHeight = container.clientHeight - startTop;
+      //     let newHeight = Math.max(
+      //       minHeight,
+      //       Math.min(startHeight + dy, maxHeight),
+      //     );
+      //     box.style.height = newHeight + "px";
+      //   } else if (currentHandle === "left") {
+      //     // Max movement left is the distance to the container edge (startLeft)
+      //     // Max movement right is limited by the minWidth
+      //     let maxDeltaLeft = startLeft;
+      //     let maxDeltaRight = startWidth - minWidth;
 
-          // Clamp the mouse movement
-          let constrainedDx = Math.max(
-            -maxDeltaLeft,
-            Math.min(dx, maxDeltaRight),
-          );
+      //     // Clamp the mouse movement
+      //     let constrainedDx = Math.max(
+      //       -maxDeltaLeft,
+      //       Math.min(dx, maxDeltaRight),
+      //     );
 
-          box.style.width = startWidth - constrainedDx + "px";
-          box.style.left = startLeft + constrainedDx + "px";
-        } else if (currentHandle === "top") {
-          // Max movement up is the distance to the container top (startTop)
-          // Max movement down is limited by the minHeight
-          let maxDeltaUp = startTop;
-          let maxDeltaDown = startHeight - minHeight;
+      //     box.style.width = startWidth - constrainedDx + "px";
+      //     box.style.left = startLeft + constrainedDx + "px";
+      //   } else if (currentHandle === "top") {
+      //     // Max movement up is the distance to the container top (startTop)
+      //     // Max movement down is limited by the minHeight
+      //     let maxDeltaUp = startTop;
+      //     let maxDeltaDown = startHeight - minHeight;
 
-          // Clamp the mouse movement
-          let constrainedDy = Math.max(-maxDeltaUp, Math.min(dy, maxDeltaDown));
+      //     // Clamp the mouse movement
+      //     let constrainedDy = Math.max(-maxDeltaUp, Math.min(dy, maxDeltaDown));
 
-          box.style.height = startHeight - constrainedDy + "px";
-          box.style.top = startTop + constrainedDy + "px";
-        }
-      }
+      //     box.style.height = startHeight - constrainedDy + "px";
+      //     box.style.top = startTop + constrainedDy + "px";
+      //   }
+      // }
 
-      function stopActions() {
-        isDragging = false;
-        isResizing = false;
-        currentHandle = null;
-        window.removeEventListener("mousemove", drag);
-        window.removeEventListener("mousemove", resize);
-        window.removeEventListener("mouseup", stopActions);
-      }
+      // function stopActions() {
+      //   isDragging = false;
+      //   isResizing = false;
+      //   currentHandle = null;
+      //   window.removeEventListener("mousemove", drag);
+      //   window.removeEventListener("mousemove", resize);
+      //   window.removeEventListener("mouseup", stopActions);
+      // }
     </script>
   </body>
 </html>

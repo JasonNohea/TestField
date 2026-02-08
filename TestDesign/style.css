@@ -12,6 +12,27 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "selee-font-1";
+  src: url("./fonts/MKSD_SEELE/Seele-One.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "selee-font-2";
+  src: url("./fonts/MKSD_SEELE/Seele-Two.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MKSA-font-1";
+  src: url("./fonts/096MKSD_winTT/096MKSA_.TTF") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 img {
   /* Prevents the 'ghost' image from appearing when dragging */
   -webkit-user-drag: none;
@@ -28,6 +49,15 @@ img {
   will-change: opacity;
 }
 
+.header-frame {
+  white-space: nowrap; /* Force text to stay on one line */
+  /* display: inline-block; Allows the element to have a consistent box model */
+  overflow: hidden; /* Ensures any slight overflow doesn't break layout */
+  vertical-align: top; /* Keeps alignment consistent */
+  min-height: 1em; /* Ensures the height doesn't collapse */
+  pointer-events: none; /* Prevents mouse interference during animation */
+}
+
 .resize {
   resize: both;
   overflow: hidden;
@@ -40,6 +70,22 @@ img {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.font-selee-1 {
+  font-family: "selee-font-1", sans-serif;
+}
+
+.font-selee-2 {
+  font-family: "selee-font-2", sans-serif;
+}
+
+.font-MKSA {
+  font-family: "MKSA-font-1", sans-serif;
+}
+
+.font-cb {
+  font-family: "cb-font-2", sans-serif;
 }
 
 .font-cb {
@@ -56,7 +102,7 @@ img {
 }
 
 .box-shadow {
-  box-shadow: -10px 6px rgba(70, 70, 70, 0.5);
+  box-shadow: -10px 6px rgba(125, 125, 125, 0.5);
 }
 
 .fat-top-left {

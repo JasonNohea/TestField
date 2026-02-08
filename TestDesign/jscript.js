@@ -16,6 +16,7 @@ function fadeSplash() {
     const frame = document.getElementById("matrix-frame");
     const headertext = document.getElementsByClassName("header-frame");
     const file = document.getElementById("file");
+    const file2 = document.getElementById("file-alt");
 
     setTimeout(() => {
         if (splash) {
@@ -60,32 +61,57 @@ function fadeSplash() {
             }
         }
     }, 3800); // 3200ms (Height start) + 600ms delay
+
+    setTimeout(() => {
+        if (file2) {
+            file2.classList.remove("none", "invisible");
+            file2.classList.add("window-popup");
+
+            // Scramble internal text for File 2
+            const texts = file2.querySelectorAll(".header-frame");
+            texts.forEach(t => {
+                t.classList.add("fade-in-active");
+                scrambleText(t);
+            });
+        }
+    }, 4000);
 }
 
 function scrambleText(element) {
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%&#$@+*";
-    const originalText = element.innerText;
+
+    // 1. Capture the "supposed text" only once
+    // If it's already saved, use the saved version; otherwise, save current text.
+    if (!element.dataset.original) {
+        element.dataset.original = element.innerText;
+    }
+
+    const originalText = element.dataset.original;
     let iteration = 0;
 
-    const interval = setInterval(() => {
+    // Clear any existing intervals on this specific element to prevent "double scrambling"
+    if (element.scrambleInterval) clearInterval(element.scrambleInterval);
+
+    element.scrambleInterval = setInterval(() => {
         element.innerText = originalText
             .split("")
             .map((char, index) => {
                 if (index < iteration) {
-                    return originalText[index]; // Correct letter
+                    return originalText[index];
                 }
-                // Random character
+                // Keep spaces as spaces to prevent layout jumping
+                if (originalText[index] === " ") return " ";
+
                 return characters[Math.floor(Math.random() * characters.length)];
             })
             .join("");
 
         if (iteration >= originalText.length) {
-            clearInterval(interval);
+            clearInterval(element.scrambleInterval);
         }
 
-        // Speed: 1/3 means it takes 3 "ticks" to lock one letter
         iteration += 1 / 1.2;
-    }, 40); // 40ms per update for a high-tech feel
+    }, 40);
 }
 
 let hasShrunk = false;
